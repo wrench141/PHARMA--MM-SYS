@@ -1,0 +1,104 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+.container .st-cont{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: white;
+}
+
+.container .st-cont .title{
+    font-size: 20px;
+    font-family: "Public Sans";
+    font-weight: 600;
+}
+
+.container .st-cont .sub{
+    font-family: "Public Sans";
+    font-size: 13px;
+    margin-top: 5px;
+    color: rgb(59, 59, 59);
+}
+
+.container .st-cont .subnav{
+    margin-top: 20px;
+    font-family: "Public Sans";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    height: 40px;
+    font-size: 13px;
+}
+
+.container .st-cont .subnav .btn{
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    cursor: pointer;
+    border-bottom: 4px solid rgb(244, 244, 244);
+}
+
+.container .st-cont .subnav .btn.sel{
+    background: rgb(253, 253, 253);
+    border-bottom: 4px solid rgb(14, 14, 14);
+}
+
+
+.container .st-cont .row{
+    margin-top: 20px;
+    width: 100%;
+    height: max-content;
+    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.container .st-cont .row .card{
+    padding: 15px;
+    border: 1.5px solid rgb(234, 234, 234);
+    width: 100%;
+    height: max-content;
+    gap: 15px;
+    font-family: "Public Sans";
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.container .st-cont .row .card .icon{
+    width: max-content;
+    height: max-content;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #5b5b5b;
+    background-color: #f0f0f0;
+}
+
+.container .st-cont .row .card .label{
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.container .st-cont .row .card .bld{
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.container .st-cont .row .card .tag{
+    font-size: 13px;
+    margin-top: 5px;
+    color: rgb(0, 168, 45);
+}

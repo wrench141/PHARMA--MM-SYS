@@ -1,0 +1,223 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+.container .st-cont{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: white;
+}
+
+.container .st-cont .title{
+    font-size: 20px;
+    font-family: "Public Sans";
+    font-weight: 600;
+}
+
+.container .st-cont .sub{
+    font-family: "Public Sans";
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.container .st-cont .tab{
+    width: 100%;
+    font-family: "Public Sans";
+    height: max-content;
+    margin-top: 20px;
+}
+
+.container .st-cont .tab .trow{
+    width: 100%;
+    height: 35px;
+    display: grid;
+    gap: 0;
+    font-size: 12px;
+    grid-template-columns: repeat(var(--col), 1fr) max-content;
+}
+
+.container .st-cont .tab .trow .head{
+    padding: 10px 15px;
+    border-bottom: 1px solid #efefef;
+    border-right: 1px solid transparent;
+    color: #535353;
+}
+
+.container .st-cont .tab .trow .head span{
+    color: red;
+}
+
+.container .st-cont .tab .trow .data{
+    padding: 10px 15px;
+    border-right: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+
+.container .st-cont .tab .trow .act{
+    cursor: pointer;
+}
+
+.container .st-cont .tab .trow .data:last-child{
+    border-right: none;
+}
+
+.backface{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000031;
+    backdrop-filter: blur(5px);
+    transition: all .5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.backface .modal{
+    width: 35%;
+    height: max-content;
+    background-color: white;
+    border-radius: 20px;
+    user-select: none;
+    padding: 20px;
+    font-family: "Public Sans";
+    box-shadow: 0 0 20px #00000026;
+}
+
+.backface .modal .mtitle{
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.backface .modal .sub{  
+    font-weight: 300;
+    margin-bottom: 15px; 
+}
+
+.backface .modal .wrap{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.backface .modal .grow{
+    width: 100%;
+    height: max-content;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.backface .modal .wrap .lab{
+    font-size: 13px;
+}
+
+.backface .modal .wrap .inp{
+    width: 100%;
+    height: 35px;
+    border:  1px solid #efefef;
+    border-radius: 5px;
+    padding: 0 10px;
+    outline: none;
+}
+
+
+.backface .modal .warning{
+    width: 100%;
+    font-size: 13px;
+    color: #E4A11B;
+    padding: 15px;
+    background-color: #e4a11b15;
+    border-radius: 10px;
+    line-height: calc(100% + 5px);
+    margin-bottom: 20px;
+    border: 1.5px solid #e4a11b79;
+}
+
+.backface .modal .warning ion-icon{
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+.backface .modal .grow .btn{
+    height: 35px;
+    border: none;
+    padding: 10px 0;
+    font-family: "Public Sans";
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+    border: 1.5px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.backface .modal .grow .btn.obtn{
+    color: black;
+    background-color: transparent;
+}
+
+
+.steps{
+    width: 35%;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px 1fr 50px;
+    align-items: center;
+    padding: 0 10px;
+    font-family: "Public sans";
+}
+
+.steps .circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    font-size: 20px;
+    color: #a3a3a3;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddddd;
+}
+
+.steps .circle.sel{
+    background: white;
+    color: black;
+}
+
+.steps .line{
+    width: 100%;
+    height: 5px;
+    background-color: #dddddd;
+}
+
+.steps .line .progress{
+    height: 100%;
+    width: 0%;
+}
+
+@keyframes progress {
+    from{
+        width: 0;
+    }to{
+        width: 100%;
+    }
+}
+
+.steps .line .progress.sel{
+    animation: progress 0.5s ease forwards;
+    background-color: white;
+}
