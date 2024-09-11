@@ -26,7 +26,7 @@ export default function Navbar(){
             </div>
             <div className="wrap">
                 <div className="tag">Stock</div>
-                <div className={selected == "chemicals" ? "option sel" : "option"}>
+                <div className={selected == "chemicals" ? "option sel" : "option"} onClick={() => window.location.href = "/chemicals"}>
                     <ion-icon name="flask"></ion-icon>
                     <p className="opt">Chemicals</p>
                 </div>

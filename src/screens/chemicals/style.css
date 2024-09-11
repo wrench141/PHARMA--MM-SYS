@@ -1,0 +1,528 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+.container .st-cont{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: white;
+}
+
+.container .st-cont .title{
+    font-size: 20px;
+    font-family: "Public Sans";
+    font-weight: 600;
+}
+
+.container .st-cont .sub{
+    font-family: "Public Sans";
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.container .st-cont .tab{
+    width: 100%;
+    font-family: "Public Sans";
+    height: max-content;
+    margin-top: 20px;
+}
+
+.container .st-cont .tab .trow{
+    width: 100%;
+    height: max-content;
+    display: grid;
+    gap: 0;
+    font-size: 12px;
+    grid-template-columns: 70px repeat(var(--col), 1fr) max-content;
+}
+
+.container .st-cont .tab .trow .head{
+    padding: 10px 15px;
+    border-bottom: 1px solid #efefef;
+    border-right: 1px solid transparent;
+    color: #535353;
+    height: 35px;
+}
+
+.container .st-cont .tab .trow .head span{
+    color: red;
+}
+
+.container .st-cont .tab .trow .data{
+    padding: 10px 15px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-right: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+
+.container .st-cont .tab .trow .data .tag{
+    width: max-content;
+    height: max-content;
+    padding: 3px 5px;
+    border-radius: 4px;
+    background: #ff0000;
+    color: #ffffff;
+    border: 1px solid red;
+    word-wrap: nowrap;
+}
+
+.container .st-cont .tab .trow .data .tag.warn{
+    background: #ebff0a;
+    color: #272727;
+    border: 1px solid #ebff0a;
+}
+
+.container .st-cont .tab .trow .act{
+    cursor: pointer;
+}
+
+.container .st-cont .tab .trow .data.act{
+    position: relative;
+}
+
+.container .st-cont .tab .trow .data:last-child{
+    border-right: none;
+}
+
+.container .st-cont .tab .trow .act .options{
+    width: max-content;
+    height: max-content;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00000014;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    transition: all 0.5s ease;
+    z-index: 2;
+}
+
+.container .st-cont .tab .trow .act .options .opt{
+    padding: 5px 10px;
+    border-bottom: 1px solid #efefef;
+    font-size: 12px;
+}
+
+.container .st-cont .tab .trow .act .options .opt:hover{
+    background: #fbfbfb;
+    border-radius: 5px;
+}
+
+.container .st-cont .tab .trow .act .options .opt:last-child{
+    border-bottom: none;
+}
+
+
+.steps{
+    width: 35%;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px 1fr 50px;
+    align-items: center;
+    padding: 0 10px;
+    font-family: "Public sans";
+}
+
+.steps .circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    font-size: 20px;
+    color: #a3a3a3;
+    justify-content: center;
+    align-items: center;
+    background-color: #dddddd;
+}
+
+.steps .circle.sel{
+    background: white;
+    color: black;
+}
+
+.steps .line{
+    width: 100%;
+    height: 5px;
+    background-color: #dddddd;
+}
+
+.steps .line .progress{
+    height: 100%;
+    width: 0%;
+}
+
+@keyframes progress {
+    from{
+        width: 0;
+    }to{
+        width: 100%;
+    }
+}
+
+.steps .line .progress.sel{
+    animation: progress 0.5s ease forwards;
+    background-color: white;
+}
+
+
+.backface .modal .wrap .select{
+    width: 100%;
+    height: 250px;
+    overflow-y: scroll;
+}
+
+.backface .modal .wrap .select .row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50px repeat(2, 1fr) 100px;
+    border: 1px solid #efefef;
+    border-bottom: none;
+    margin: 0;
+    /* border-right: none; */
+    /* border-left: none; */
+}
+
+.backface .modal .wrap .select .row.sel{
+    background: #fafafa;
+}
+
+.backface .modal .wrap .select .row:last-child{
+    border-bottom: 1px solid #efefef;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.backface .modal .wrap .select .row .head, .bdy{
+    font-size: 12px;
+    padding: 5px 10px;
+    color: #5b5b5b;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #efefef;
+}
+
+.backface .modal .wrap .select .row .bdy{
+    color: black;
+    word-wrap: nowrap;
+    font-size: 13px;
+}
+
+.backface .modal .wrap .select .row .bdy .inp{
+    width: 100%;
+}
+
+.backface .modal .wrap .select .row .head .btn,
+.backface .modal .wrap .select .row .bdy .btn{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.backface .modal .wrap .select .row .bdy .btn{
+    justify-content: center;
+    padding: 0 10px;
+    font-family: "Public Sans";
+    font-size: 13px;
+    border-radius: 5px;
+    border: 1px solid #00000077;
+    color: black;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.backface .modal .wrap .select .row .bdy .btn.sel,
+.backface .modal .wrap .select .row .bdy .btn:hover{
+    background: black;
+    color: white;
+}
+
+
+.backdrop{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000017;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.backdrop .modal{
+    width: max-content;
+    height: max-content;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    user-select: none;
+    font-family: "Public Sans";
+}
+
+.backdrop .modal .row{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.backdrop .modal .row .wr{
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 0;
+    font-size: 12px;
+    justify-content: center;
+}
+
+.backdrop .modal .row .wr ion-icon{
+    font-size: 18px;
+    color: rgb(171, 171, 171);
+    cursor: pointer;
+}
+
+
+.backdrop .modal .btnwrap{
+    margin-top: 20px;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.backdrop .modal .sub.op{
+    color: black;
+    margin-top: 10px;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.backdrop .modal .mtitle{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.backdrop .modal .sub{
+    font-size: 12px;
+    color: #4f4f4f;
+    margin-bottom: 20px;
+}
+
+.backdrop .modal .upload{
+    width: 100%;
+    height: max-content;
+    border: 2px dashed #efefef;
+    border-radius: 10px;
+    padding: 40px 20px;
+    background: #fdfdfd;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.backdrop .modal .warn{
+    font-size: 12px;
+    margin: 10px 0;
+    color: #e10000;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.backdrop .modal .upload.file ion-icon{
+    font-size: 40px;
+    color: #37bd29;
+}
+
+.backdrop .modal .upload.file .utit{
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.backdrop .modal .upload.file .btn{
+    height: max-content;
+    width: max-content;
+    font-family: "Public Sans";
+    font-size: 12px;
+    margin-top: 5px;
+    text-decoration: none;
+}
+
+.backdrop .modal .upload.file .sub{
+    margin-bottom: 5px;
+}
+
+
+.backdrop .modal .upload ion-icon{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.backdrop .modal .upload .usub{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.backdrop .modal .upload .subtag{
+    font-size: 12px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    color: #626262;
+    width: 70%;
+}
+
+.backdrop .modal .upload .upl{
+    width: max-content;
+    height: max-content;
+    border: 1px solid #d2d2d2;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.backdrop .modal .btnwrap .dbtn{
+    width: 100%;
+    border-radius: 5px;
+    font-family: "Public Sans";
+    border: 1px solid transparent;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: var(--bg-col);
+}
+
+.backdrop .modal .btnwrap .dbtn.ot{
+    border: 2px solid #efefef;
+    color: black;
+    background: transparent;
+
+}
+
+.loader{
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    background-image: conic-gradient(white 70deg,white 0 235deg, var(--bg-col) 0);
+    position: relative;
+    animation: load 0.5s ease infinite;
+}
+
+@keyframes load {
+    from{
+        transform: rotate(0deg);
+    }to{
+        transform: rotate(360deg);
+    }
+}
+
+.loader::after{
+    width: 15px;
+    height: 15px;
+    background-color: var(--bg-col);
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.notification{
+    width: max-content;
+    height: 30px;
+    padding: 0 10px;
+    background-color: white;
+    box-shadow: 0 0 10px #00000006;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    border-radius: 5px;
+    animation: notify 0.5s ease forwards;
+}
+
+@keyframes notify {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+.center{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    gap: 5px;
+}
+
+.center .nf{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.container .st-cont .trow{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container .st-cont .row .wrap{
+    height: max-content;
+    width: 100%;
+}
+
+.container .st-cont .trow .btn{
+    height: 30px;
+    width: max-content;
+    background-color: black;
+    color: white;
+    font-family: "Public Sans";
+    font-size: 13px;
+    padding: 0 15px;
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.container .st-cont .trow .btn:hover{
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
+}
