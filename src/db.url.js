@@ -1,2 +1,2 @@
-const DB_URL = "http://localhost:5000"
+const DB_URL = "https://quickstock-server.vercel.app"
 export default DB_URL
