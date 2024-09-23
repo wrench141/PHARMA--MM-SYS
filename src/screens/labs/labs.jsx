@@ -51,7 +51,7 @@ function TableRow({ lab, i }) {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/api.v1/auth/users", {
+                const response = await axios.get(DB_URL + "/api.v1/auth/users", {
                     headers: {
                         token: window.localStorage.getItem("token")
                     }
@@ -195,7 +195,7 @@ export default function Labs() {
         fetchData();
         const fetchUsers = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/api.v1/auth/users", {
+                const response = await axios.get(DB_URL + "/api.v1/auth/users", {
                     headers: {
                         token: window.localStorage.getItem("token")
                     }
@@ -208,13 +208,13 @@ export default function Labs() {
 
         const fetchLabs = async () => {
             try {
-                const response = await axios.get("http://localhost:4000/api.v1/labs/", {
+                const response = await axios.get(DB_URL + "/api.v1/labs/", {
                     headers: {
                         token: window.localStorage.getItem("token")
                     }
                 });
                 setLabs(response.data.data)
-                console.log(response.data.data)
+                console.log(response.data)
             } catch (error) {
                 console.log(error)
             }
@@ -259,7 +259,7 @@ export default function Labs() {
             <div className="st-cont">
                 <div className="trow">
                     <div className="wrap">
-                        <p className="title">Chemicals</p>
+                        <p className="title">Laboratories</p>
                         <p className="sub">Easily manage and monitor all your materials from a single location!</p>
                     </div>
                     <button className="btn" onClick={() => {

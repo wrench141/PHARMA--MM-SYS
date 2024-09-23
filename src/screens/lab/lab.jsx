@@ -7,17 +7,45 @@ import Jobrecard from "./dataentry";
 
 export default function Lab(){
     const {id} = useParams();
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
+    const [chemicals, setChemicals] = useState([]);
+    const [experiments, setExperiments] = useState([]);
+    const [experiment, setExperiment] = useState("");
+
+
     useEffect(() => {
         const fetchData = async() => {
-            const response = await axios.get(DB_URL + `/api.v1/labs/${id}`, {
-                headers:{
-                    token: window.localStorage.getItem("token")
-                }
-            });
-            console.log(response.data)
+            try {
+                const response = await axios.get(DB_URL + `/api.v1/labs/${id}`, {
+                    headers:{
+                        token: window.localStorage.getItem("token")
+                    }
+                });
+                setChemicals(response.data.chemicals)
+                console.log(response.data.chemicals)
+            } catch (error) {
+                console.log(error)
+            }
         };
-        fetchData()
+
+        const fetchExperiments = async() => {
+            try {
+                const response = await axios.get(DB_URL + "/api.v1/labs/experiments/" + id, {
+                    headers: {
+                        token: window.localStorage.getItem("token")
+                    }
+                });
+                setExperiments(
+                    response.data
+                );
+                console.log(response.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchData();
+        fetchExperiments();
     }, [])
     return(
         <div className="lcontainer">
@@ -31,6 +59,7 @@ export default function Lab(){
                 <button className="btn">Logout</button>
             </div>
             <div className="lab-center">
+                <p className="tag">Welcome {experiments?.username}, {experiments?.lab}</p>
                 <p className="title">
                     Detailed Consumption Report of Chemicals and Lab Equipment
                 </p>
@@ -42,37 +71,66 @@ export default function Lab(){
                         <ion-icon name="warning-outline"></ion-icon>
                         Raise Breakage
                     </button>
-                    <button className="btn" onClick={() => setShow(true)}>
+                    <button className="btn" onClick={() => {setShow(true); setExperiment("")}}>
                         <ion-icon name="add-outline"></ion-icon>
                         Create Job Record
                     </button>
                 </div>
             </div>
-            {
-                show ? (
-                    <Jobrecard />
-                ) : null
-            }
-            <div className="cards">
+            <div className="cards" style={{height: "max-content", paddingBottom: "50px"}}>
                 <p className="title">Job Cards</p>
                 <div className="cards-wrap">
-                    <div className="card">
-                        <div className="sec">
-                            <p className="date">02-09-2004</p>
-                            <p className="name">Chemical Reaction</p>
-                            <p className="sub">Click on this card to view more..</p>
-                        </div>
-                        <div className="row">
-                            <div className="wrap">
-                                <p className="num">14</p>
-                                <p className="lab">Chemicals used</p>
+                    {
+                        experiments?.data?.map((exp, i) => (
+                            <div className="card" key={i} onClick={() => { setExperiment(exp._id)}}>
+                                {
+                                    show ? (
+                                        <Jobrecard chemicals={chemicals} setState={setShow} expId={experiment}/>
+                                    ) : null
+                                }
+                                <div className="sec">
+                                    <p className="date">{exp.createdAt.split("T")[0]}</p>
+                                    <p className="name">{exp.experiment}</p>
+                                    <p className="sub">Click on this card to view more..</p>
+                                </div>
+                                <div className="row">
+                                    <div className="wrap">
+                                        <p className="num">{exp.chemicals.length}</p>
+                                        <p className="lab">Chemicals used</p>
+                                    </div>
+                                    <button className="btn" onClick={() => {setShow(true); setExperiment(exp._id)}}>
+                                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                                    </button>
+                                </div>
                             </div>
-                            <button className="btn">
-                                <ion-icon name="arrow-forward-outline"></ion-icon>
-                            </button>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </div>
+            </div>
+            <div className="cards" style={{height: "max-content", paddingBottom: "50px"}}>
+                <p className="title">Stock Information</p>
+                <table className="table">
+                    <tr className="row">
+                        <th className="head">Sno</th>
+                        <th className="head">Code </th>
+                        <th className="head">Name </th>
+                        <th className="head">Expires At </th>
+                        <th className="head">Manufactured </th>
+                        <th className="head">Quantity </th>
+                    </tr>
+                    {
+                        chemicals.length > 0 ? chemicals.map((chemical, i) => (
+                            <tr className="row">
+                                <td className="data">{i+1}</td>
+                                <td className="data">{chemical?.chemicalCode}</td>
+                                <td className="data">{chemical?.name}</td>
+                                <td className="data">{chemical?.expiresAt.split("T")[0]}</td>
+                                <td className="data">{chemical?.manufacturedDate.split("T")[0]}</td>
+                                <td className="data">{chemical?.quantity}</td>
+                            </tr>
+                        )) : null
+                    }
+                </table>
             </div>
         </div>
     )

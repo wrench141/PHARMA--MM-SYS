@@ -24,14 +24,14 @@
     margin-top: 5px;
 }
 
-.container .st-cont .tab{
+.tab{
     width: 100%;
     font-family: "Public Sans";
     height: max-content;
     margin-top: 20px;
 }
 
-.container .st-cont .tab .trow{
+.tab .trow{
     width: 100%;
     height: max-content;
     display: grid;
@@ -40,7 +40,7 @@
     grid-template-columns: 70px repeat(var(--col), 1fr) max-content;
 }
 
-.container .st-cont .tab .trow .head{
+.tab .trow .head{
     padding: 10px 15px;
     border-bottom: 1px solid #efefef;
     border-right: 1px solid transparent;
@@ -48,11 +48,11 @@
     height: 35px;
 }
 
-.container .st-cont .tab .trow .head span{
+.tab .trow .head span{
     color: red;
 }
 
-.container .st-cont .tab .trow .data{
+.tab .trow .data{
     padding: 10px 15px;
     height: 100%;
     width: 100%;
@@ -63,7 +63,7 @@
     border-bottom: 1px solid #efefef;
 }
 
-.container .st-cont .tab .trow .data .tag{
+.tab .trow .data .tag{
     width: max-content;
     height: max-content;
     padding: 3px 5px;
@@ -74,25 +74,25 @@
     word-wrap: nowrap;
 }
 
-.container .st-cont .tab .trow .data .tag.warn{
+.tab .trow .data .tag.warn{
     background: #ebff0a;
     color: #272727;
     border: 1px solid #ebff0a;
 }
 
-.container .st-cont .tab .trow .act{
+.tab .trow .act{
     cursor: pointer;
 }
 
-.container .st-cont .tab .trow .data.act{
+.tab .trow .data.act{
     position: relative;
 }
 
-.container .st-cont .tab .trow .data:last-child{
+.tab .trow .data:last-child{
     border-right: none;
 }
 
-.container .st-cont .tab .trow .act .options{
+.tab .trow .act .options{
     width: max-content;
     height: max-content;
     background-color: white;
@@ -106,18 +106,18 @@
     z-index: 2;
 }
 
-.container .st-cont .tab .trow .act .options .opt{
+.tab .trow .act .options .opt{
     padding: 5px 10px;
     border-bottom: 1px solid #efefef;
     font-size: 12px;
 }
 
-.container .st-cont .tab .trow .act .options .opt:hover{
+.tab .trow .act .options .opt:hover{
     background: #fbfbfb;
     border-radius: 5px;
 }
 
-.container .st-cont .tab .trow .act .options .opt:last-child{
+.tab .trow .act .options .opt:last-child{
     border-bottom: none;
 }
 
@@ -526,3 +526,5 @@
     background-color: transparent;
     color: black;
 }
+
+
