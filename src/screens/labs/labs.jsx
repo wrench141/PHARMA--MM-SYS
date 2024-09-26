@@ -81,6 +81,7 @@ function TableRow({ lab, i }) {
                 <div className="section">
                     <p className="title">Lab Details</p>
                     <p className="sub">You  can edit the lab details from here</p>
+                    <button className="btn" onClick={() => window.location.href = `/lab/${lab._id}`}>View Lab</button>
                 </div>
                 <div className="grid">
                     <div className="wrap">

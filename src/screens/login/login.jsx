@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+    import { useEffect, useRef, useState } from "react";
 import "../register/style.css";
 import axios from "axios"
 import DB_URL from "../../db.url";
@@ -13,10 +13,9 @@ export default function Login(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const [notification, setNotification] = useState("")
+    const [notification, setNotification] = useState(window.localStorage.getItem("message")?.toString() || "")
 
     const submitHandler = async() => {
-        console.log("heelo")
         setLoader(true)
         try {
             const data = {
@@ -34,7 +33,14 @@ export default function Login(){
             console.log(error)
             setNotification(error.response.data.data)
         }
-    }
+    };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setNotification("");
+            window.localStorage.removeItem("message")
+        }, 3000)
+    },[])
 
 
     return(

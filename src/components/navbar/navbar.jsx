@@ -4,6 +4,8 @@ import "./style.css"
 export default function Navbar(){
     const [selected, setSelected] = useState("dashboard");
     useEffect(() => {
+        const loginStatus = window.localStorage.getItem("token");
+        if(!loginStatus){window.location.href = "/login"; window.localStorage.setItem("message", "session logged out!")}
         setSelected((new URL(window.location.href)).pathname.split("/")[1])
     }, [])
     return(
@@ -14,10 +16,12 @@ export default function Navbar(){
                 <div className={selected == "dashboard" ? "option sel" : "option"}>
                     <ion-icon name="grid"></ion-icon>
                     <p className="opt">Dashboard</p>
+                    <div className="badge">soon</div>
                 </div>
                 <div className={selected == "store" ? "option sel" : "option"} onClick={() => window.location.href = "/store"}>
                     <ion-icon name="storefront"></ion-icon>
                     <p className="opt">Store</p>
+                    <div className="badge">soon</div>
                 </div>
                 <div className={selected == "labs" ? "option sel" : "option"} onClick={() => window.location.href = "/labs"}>
                     <ion-icon name="sparkles"></ion-icon>
@@ -33,6 +37,7 @@ export default function Navbar(){
                 <div className={selected == "glassware" ? "option sel" : "option"}>
                     <ion-icon name="beaker"></ion-icon>
                     <p className="opt">Glassware</p>
+                    <div className="badge">soon</div>
                 </div>
             </div>
             <div className="wrap">
@@ -40,12 +45,14 @@ export default function Navbar(){
                 <div className={selected == "settings" ? "option sel" : "option"}>
                     <ion-icon name="cog"></ion-icon>
                     <p className="opt">Settings</p>
+                    <div className="badge">soon</div>
                 </div>
                 <div className={selected == "complaints" ? "option sel" : "option"}>
                     <ion-icon name="warning"></ion-icon>
                     <p className="opt">Complaints</p>
+                    <div className="badge">soon</div>
                 </div>
-                <div className="option">
+                <div className="option" onClick={() => {window.localStorage.removeItem("token"); window.location.href = "/login"}}>
                     <ion-icon name="log-out-outline"></ion-icon>
                     <p className="opt">Logout</p>
                 </div>
