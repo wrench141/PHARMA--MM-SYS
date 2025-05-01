@@ -7,11 +7,10 @@ import Jobrecard from "./dataentry";
 
 export default function Lab(){
     const {id} = useParams();
+    console.log(id)
     const [show, setShow] = useState(false);
     const [chemicals, setChemicals] = useState([]);
     const [experiments, setExperiments] = useState([]);
-    const [experiment, setExperiment] = useState("");
-
 
     useEffect(() => {
         const fetchData = async() => {
@@ -21,34 +20,21 @@ export default function Lab(){
                         token: window.localStorage.getItem("token")
                     }
                 });
-                setChemicals(response.data.chemicals)
-                console.log(response.data.chemicals)
+                setChemicals(response.data.data.chemicals)
+                console.log(response.data.data.chemicals, "chems")
             } catch (error) {
                 console.log(error)
             }
         };
-
-        const fetchExperiments = async() => {
-            try {
-                const response = await axios.get(DB_URL + "/api.v1/labs/experiments/" + id, {
-                    headers: {
-                        token: window.localStorage.getItem("token")
-                    }
-                });
-                setExperiments(
-                    response.data
-                );
-                console.log(response.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-
         fetchData();
-        fetchExperiments();
     }, [])
     return(
         <div className="lcontainer">
+            {
+                show ? (
+                    <Jobrecard chemicals={chemicals} setState={setShow}/>
+                ) : null
+            }
             <div className="topbar">
                 <div className="wrap">
                     <div className="logo-wrap">
@@ -69,9 +55,9 @@ export default function Lab(){
                 <div className="btn-wrap">
                     <button className="btn ot">
                         <ion-icon name="warning-outline"></ion-icon>
-                        Raise Breakage
+                        Raise Breakage - Soon
                     </button>
-                    <button className="btn" onClick={() => {setShow(true); setExperiment("")}}>
+                    <button className="btn" onClick={() => {setShow(true)}}>
                         <ion-icon name="add-outline"></ion-icon>
                         Create Job Record
                     </button>
@@ -82,12 +68,7 @@ export default function Lab(){
                 <div className="cards-wrap">
                     {
                         experiments?.data?.map((exp, i) => (
-                            <div className="card" key={i} onClick={() => { setExperiment(exp._id)}}>
-                                {
-                                    show ? (
-                                        <Jobrecard chemicals={chemicals} setState={setShow} expId={experiment}/>
-                                    ) : null
-                                }
+                            <div className="card" key={i} >
                                 <div className="sec">
                                     <p className="date">{exp.createdAt.split("T")[0]}</p>
                                     <p className="name">{exp.experiment}</p>
@@ -98,7 +79,7 @@ export default function Lab(){
                                         <p className="num">{exp.chemicals.length}</p>
                                         <p className="lab">Chemicals used</p>
                                     </div>
-                                    <button className="btn" onClick={() => {setShow(true); setExperiment(exp._id)}}>
+                                    <button className="btn" onClick={() => {setShow(true)}}>
                                         <ion-icon name="arrow-forward-outline"></ion-icon>
                                     </button>
                                 </div>
@@ -119,7 +100,7 @@ export default function Lab(){
                         <th className="head">Quantity </th>
                     </tr>
                     {
-                        chemicals.length > 0 ? chemicals.map((chemical, i) => (
+                        chemicals?.length > 0 ? chemicals?.map((chemical, i) => (
                             <tr className="row">
                                 <td className="data">{i+1}</td>
                                 <td className="data">{chemical?.chemicalCode}</td>

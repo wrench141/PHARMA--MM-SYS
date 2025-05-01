@@ -124,7 +124,7 @@ export default function Jobrecard({chemicals, setState, expId}){
                 {
                     expId != "" ? (
                         <div className="btnwrap">
-                            <button className="btn ot" onClick={() => setState(false)}>
+                            <button className="btn ot" style={{color: "white"}} onClick={() => setState(false)}>
                                 Close
                             </button>
                             <button className={
@@ -139,12 +139,12 @@ export default function Jobrecard({chemicals, setState, expId}){
                                                 response != "" ? (
                                                     <>
                                                         <ion-icon name="cloud-done-outline"></ion-icon>
-                                                        {"removed"}
+                                                        {"Record Added"}
                                                     </>
                                                 ) : (
                                                     <>
                                                         <ion-icon name="cloud-upload-outline"></ion-icon>
-                                                        Remove Record
+                                                        Create Record
                                                     </>
                                                 )
                                             }
@@ -155,7 +155,7 @@ export default function Jobrecard({chemicals, setState, expId}){
                         </div>
                     ) : (
                         <div className="btnwrap">
-                            <button className="btn ot" onClick={() => setState(false)}>
+                            <button className="btn ot" style={{color: "white"}} onClick={() => setState(false)}>
                                 Cancel
                             </button>
                             <button className={
